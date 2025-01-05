@@ -7,4 +7,6 @@ response = requests.get(url)
 print(response.status_code)
 
 soup = BeautifulSoup(response.text, 'html.parser')
-print(soup.prettify())
+
+title = soup.find('title')
+print(title)

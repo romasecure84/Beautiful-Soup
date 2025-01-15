@@ -37,3 +37,15 @@ for page in range(1, 11):
     first_author = first_element.small.text
     print(first_author)
 
+response = requests.get('https://quotes.toscrape.com/')
+soup = BeautifulSoup(response.text, 'html.parser')
+next_button = soup.find('li', class_ = 'next').a
+href_next = next_button['href']
+print(href_next)
+
+last_quote = next_button.parent.parent.parent.find_previous_sibling()
+print(last_quote)
+
+print(last_quote['class'])
+
+print(last_quote['itemtype'])
